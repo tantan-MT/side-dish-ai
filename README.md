@@ -270,6 +270,7 @@ AI任せにせず、アプリ側でも制御する設計とします。
 - DB：PostgreSQL
 - デプロイ先：Render
 - 使用予定ライブラリ：OpenAI API / Hotwire / TailwindCSS
+- 認証：Devise（ユーザー登録・ログイン・ログアウト機能）
 
 ---
 
