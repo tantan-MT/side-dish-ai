@@ -265,6 +265,7 @@ AI任せにせず、アプリ側でも制御する設計とします。
 
 ## 10-1. 使用予定の技術
 
+- Ruby：3.3.0
 - フレームワーク：Ruby on Rails 7
 - DB：PostgreSQL
 - デプロイ先：Render
