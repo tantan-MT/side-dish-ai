@@ -314,3 +314,8 @@ MVP段階では利用ユーザー数が限定的であるため、
 月額数百円〜数千円以内での運用を想定しています。
 
 ---
+
+### 画面遷移図
+Figma：<https://www.figma.com/design/ryirqfvXdBvGLCWHtb9ucd/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3%E4%BD%9C%E6%88%90%E3%83%AF%E3%83%BC%E3%82%AF%EF%BC%8874%E6%9C%9FA%E4%B8%B9%E9%87%8E%E7%9C%9E%E4%BA%BA%EF%BC%89?node-id=0-1&p=f&t=vOTnO15JbdGbovi9-0>
+
+---
