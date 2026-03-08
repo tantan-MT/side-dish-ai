@@ -321,4 +321,7 @@ Figma：<https://www.figma.com/design/ryirqfvXdBvGLCWHtb9ucd/%E7%94%BB%E9%9D%A2%
 ---
 
 ### ER図
-https://dbdiagram.io/d/69ad6543a44dc25f8b425b26
+ER図は以下のリンクから確認できます。
+[ER図を見る](https://dbdiagram.io/d/69ad6543a44dc25f8b425b26)
+
+---
