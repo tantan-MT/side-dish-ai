@@ -76,8 +76,8 @@ test:
 # URL environment variable explicitly:
 #
 production:
-  primary:
-    url: <%= ENV['DATABASE_URL'] %>
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
 #
 # Connection URLs for non-primary databases can also be configured using
 # environment variables. The variable name is formed by concatenating the
