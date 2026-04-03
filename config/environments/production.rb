@@ -50,11 +50,10 @@ Rails.application.configure do
   config.cache_store = :memory_store
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
-  config.active_job.queue_adapter = :async
-  config.action_cable.adapter = "async"
-  config.action_cable.mount_path = nil
-  config.action_cable.url = nil
-  config.action_cable.enabled = false
+  # config.active_job.queue_adapter = :async
+  # config.action_cable.mount_path = nil
+  # config.action_cable.url = nil
+  # config.action_cable.enabled = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
