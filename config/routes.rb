@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "ingredients/index"
   get "home/index"
   root "home#index"
   match "/", to: "home#index", via: [ :get, :head ]
@@ -14,4 +15,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :ingredients, only: [:index]
 end
