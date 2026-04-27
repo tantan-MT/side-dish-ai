@@ -1,3 +1,7 @@
+.selected {
+  background-color: green;
+  color: white;
+}
 /*
  * This is a manifest file that'll be compiled into application.css.
  *
