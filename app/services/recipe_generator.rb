@@ -1,4 +1,4 @@
-class OpenaiRecipeService
+class RecipeGenerator
   def generate(ingredients)
     client = OpenAI::Client.new
 
@@ -27,9 +27,12 @@ class OpenaiRecipeService
 
       条件:
       - 調理時間は10分以内
+      - お弁当に入れやすい副菜
       - 家庭で簡単に作れる
-      - 特別な材料を使わない
+      - 特別な調味料を使わない
       - 食材は必ず1つ以上使用する
+      - 電子レンジまたはフライパン調理のみ
+      - 工程は最大5ステップ以内
 
       使用する食材:
       #{ingredients.join(", ")}
@@ -42,14 +45,16 @@ class OpenaiRecipeService
         "description": "レシピの簡単な説明",
         "ingredients": [
           "材料1",
-          "材料2"
+          "材料2",
+          "材料3"
         ],
         "steps": [
           "手順1",
           "手順2",
-          "手順3"
-        ],
-        "cooking_time": "10分"
+          "手順3",
+          "手順4",
+          "手順5"
+        ]
       }
     PROMPT
   end
