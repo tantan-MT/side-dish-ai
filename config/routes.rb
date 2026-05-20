@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "recipes/show"
   get "ingredients/index"
   get "home/index"
   root "home#index"
