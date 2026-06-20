@@ -1,3 +1,14 @@
+<% if user_signed_in? %>
+  <p>ログイン中</p>
+  <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
+<% else %>
+  <%= link_to "ログイン", new_user_session_path %>
+  |
+  <%= link_to "新規登録", new_user_registration_path %>
+<% end %>
+
+<hr>
+
 <h1>食材を選んで副菜を提案</h1>
 
 <%= link_to "レシピを提案する", recipes_show_path, class: "btn btn-primary" %>
