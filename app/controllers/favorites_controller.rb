@@ -1,6 +1,10 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @recipes = current_user.favorite_recipes
+  end
+
   def create
     recipe = Recipe.create!(
       title: params[:title],
