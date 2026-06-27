@@ -4,7 +4,7 @@
   <ul>
     <% @recipes.each do |recipe| %>
       <li>
-        <%= recipe.title %>
+        <%= link_to recipe.title, favorite_path(recipe) %>
       </li>
     <% end %>
   </ul>

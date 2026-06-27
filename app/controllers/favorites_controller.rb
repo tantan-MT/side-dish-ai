@@ -5,6 +5,10 @@ class FavoritesController < ApplicationController
     @recipes = current_user.favorite_recipes
   end
 
+  def show
+    @recipe = current_user.favorite_recipes.find(params[:id])
+  end
+
   def create
     recipe = Recipe.create!(
       title: params[:title],

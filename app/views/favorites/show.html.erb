@@ -1,0 +1,7 @@
+<h1><%= @recipe.title %></h1>
+
+<h2>作り方</h2>
+
+<p><%= simple_format(@recipe.instructions) %></p>
+
+<%= link_to "保存レシピ一覧へ戻る", favorites_path %>
