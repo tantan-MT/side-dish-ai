@@ -4,4 +4,13 @@
 
 <p><%= simple_format(@recipe.instructions) %></p>
 
+<%= button_to "保存を解除",
+              favorite_path(@recipe),
+              method: :delete,
+              data: {
+                turbo_confirm: "このレシピを削除しますか？"
+              } %>
+
+<br>
+
 <%= link_to "保存レシピ一覧へ戻る", favorites_path %>
