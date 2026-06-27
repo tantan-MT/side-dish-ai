@@ -2,6 +2,13 @@
 
 <ul>
   <% @ingredients.each do |ingredient| %>
-    <li><%= ingredient.name %>（<%= ingredient.ingredient_category.name %>）</li>
+    <li>
+      <% if ingredient.image.attached? %>
+        <%= image_tag ingredient.image, width: 150 %><br>
+      <% end %>
+
+      <%= ingredient.name %>
+      （<%= ingredient.ingredient_category.name %>）
+    </li>
   <% end %>
 </ul>
