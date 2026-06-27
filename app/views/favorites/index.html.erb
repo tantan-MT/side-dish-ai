@@ -1,0 +1,13 @@
+<h1>保存したレシピ一覧</h1>
+
+<% if @recipes.any? %>
+  <ul>
+    <% @recipes.each do |recipe| %>
+      <li>
+        <%= recipe.title %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>保存したレシピはありません。</p>
+<% end %>
