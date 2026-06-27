@@ -18,4 +18,13 @@
 
 <%= link_to "もう一度提案する", recipes_show_path, class: "btn btn-secondary" %>
 
+<%= button_to "保存する",
+    favorites_path,
+    method: :post,
+    params: {
+      title: @recipe[:title],
+      instructions: @recipe[:steps].join("\n")
+    },
+    class: "btn btn-primary" %>
+
 <%= link_to "トップに戻る", root_path %>
