@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "static_pages/privacy_policy"
   get "users/show"
   devise_for :users
   get "recipes/show"
@@ -21,4 +22,6 @@ Rails.application.routes.draw do
   resources :ingredients, only: [ :index ]
   resources :favorites, only: [ :index, :show, :create, :destroy ]
   resource :user, only: [ :show ]
+
+  get "privacy_policy", to: "static_pages#privacy_policy"
 end
