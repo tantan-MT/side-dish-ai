@@ -1,0 +1,16 @@
+<h1>マイページ</h1>
+
+<p>
+  <strong>メールアドレス</strong><br>
+  <%= @user.email %>
+</p>
+
+<hr>
+
+<p>
+  <%= link_to "保存レシピ一覧", favorites_path %>
+</p>
+
+<p>
+  <%= link_to "トップへ戻る", root_path %>
+</p>

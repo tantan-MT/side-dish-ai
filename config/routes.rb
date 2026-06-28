@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "users/show"
   devise_for :users
   get "recipes/show"
   get "ingredients/index"
@@ -19,4 +20,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :ingredients, only: [ :index ]
   resources :favorites, only: [ :index, :show, :create, :destroy ]
+  resource :user, only: [ :show ]
 end
