@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "contacts/new"
+  get "contacts/create"
   get "static_pages/privacy_policy"
   get "users/show"
   devise_for :users
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
   resources :ingredients, only: [ :index ]
   resources :favorites, only: [ :index, :show, :create, :destroy ]
   resource :user, only: [ :show ]
+  resources :contacts, only: [ :new, :create ]
 
   get "privacy_policy", to: "static_pages#privacy_policy"
   get "terms", to: "static_pages#terms"
