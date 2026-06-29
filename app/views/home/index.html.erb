@@ -1,21 +1,42 @@
-<h1>食材を選んで副菜を提案</h1>
-
-<%= link_to "レシピを提案する", recipes_show_path, class: "btn btn-primary" %>
-
 <div data-controller="ingredients">
-  <button data-action="click->ingredients#toggle">
-    にんじん
-  </button>
 
-  <button data-action="click->ingredients#toggle">
-    玉ねぎ
-  </button>
+  <h1>食材を選んで副菜を提案</h1>
 
-  <button data-action="click->ingredients#toggle">
-    ピーマン
-  </button>
+  <%= link_to "レシピを提案する",
+      recipes_show_path,
+      class: "btn-primary disabled",
+      data: {
+        ingredients_target: "submit"
+      } %>
 
-  <button data-action="click->ingredients#toggle">
-    じゃがいも
-  </button>
+  <% @categories.each do |category| %>
+
+    <section class="ingredient-section">
+
+      <h2><%= category.name %></h2>
+
+      <div class="ingredient-grid">
+
+        <% category.ingredients.each do |ingredient| %>
+
+          <button
+            class="ingredient-card"
+            data-action="click->ingredients#toggle">
+
+            <div class="ingredient-circle">
+
+            </div>
+
+            <span><%= ingredient.name %></span>
+
+          </button>
+
+        <% end %>
+
+      </div>
+
+    </section>
+
+  <% end %>
+
 </div>
