@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   resource :user, only: [ :show ]
 
   get "privacy_policy", to: "static_pages#privacy_policy"
+  get "terms", to: "static_pages#terms"
 end
