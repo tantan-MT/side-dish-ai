@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # ホーム・食材
   # =========================
   get "home/index"
-  resources :ingredients, only: [:index]
+  resources :ingredients, only: [ :index ]
 
   # ingredients/index は不要（resourcesでカバー済み）
   # get "ingredients/index"
@@ -21,22 +21,22 @@ Rails.application.routes.draw do
   # =========================
   # レシピ
   # =========================
-  resources :recipes, only: [:create, :show]
+  resources :recipes, only: [ :create, :show ]
 
   # =========================
   # お気に入り
   # =========================
-  resources :favorites, only: [:index, :show, :create, :destroy]
+  resources :favorites, only: [ :index, :show, :create, :destroy ]
 
   # =========================
   # ユーザー
   # =========================
-  resource :user, only: [:show]
+  resource :user, only: [ :show ]
 
   # =========================
   # お問い合わせ
   # =========================
-  resources :contacts, only: [:new, :create]
+  resources :contacts, only: [ :new, :create ]
 
   # =========================
   # 静的ページ
