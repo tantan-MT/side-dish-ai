@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
           title: "テストレシピ",
           description: "テスト用",
           ingredients: ingredients.map(&:name),
-          steps: ["切る", "炒める"]
+          steps: [ "切る", "炒める" ]
         }
       else
         RecipeGenerator.new.generate(ingredients.map(&:name))
