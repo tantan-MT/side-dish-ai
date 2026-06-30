@@ -15,11 +15,50 @@ class RecipeGenerator
     )
 
     content = response.dig("choices", 0, "message", "content")
-    JSON.parse(content, symbolize_names: true)
+    Rails.logger.debug(content)
+
+    cleaned = content.to_s.gsub(/```json|```/, "").strip
+
+    result = JSON.parse(cleaned, symbolize_names: true)
+
+    # 型保証（ここが重要）
+    result[:title] = result[:title].to_s
+    result[:description] = result[:description].to_s
+
+    result[:ingredients] = normalize_array(result[:ingredients])
+    result[:steps] = normalize_array(result[:steps])
+
+    result
+  rescue => e
+    Rails.logger.error("RecipeGenerator Error: #{e.message}")
+
+    {
+      title: "エラー",
+      description: "レシピ生成に失敗しました",
+      ingredients: [],
+      steps: []
+    }
   end
 
   private
 
+  # =========================
+  # 配列の安全化
+  # =========================
+  def normalize_array(value)
+    case value
+    when Array
+      value
+    when String
+      value.split(/,|\n|・/).map(&:strip).reject(&:blank?)
+    else
+      []
+    end
+  end
+
+  # =========================
+  # プロンプト（条件フル保持）
+  # =========================
   def prompt(ingredients)
     <<~PROMPT
       以下の食材を使って、
@@ -37,8 +76,8 @@ class RecipeGenerator
       使用する食材:
       #{ingredients.join(", ")}
 
-      以下のJSON形式のみで出力してください。
-      説明文やコードブロック（```json）は不要です。
+      以下のJSON形式「のみ」で出力してください。
+      説明文、前置き、```json は一切禁止です。
 
       {
         "title": "レシピ名",

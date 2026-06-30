@@ -1,31 +1,52 @@
 Rails.application.routes.draw do
-  get "contacts/new"
-  get "contacts/create"
-  get "static_pages/privacy_policy"
-  get "users/show"
   devise_for :users
-  get "recipes/show"
-  get "ingredients/index"
-  get "home/index"
+
+  # =========================
+  # ホーム
+  # =========================
   root "home#index"
-  match "/", to: "home#index", via: [ :get, :head ]
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # rootと重複しているので削除OK（必要なし）
+  # match "/", to: "home#index", via: [:get, :head]
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # =========================
+  # ホーム・食材
+  # =========================
+  get "home/index"
   resources :ingredients, only: [ :index ]
+
+  # ingredients/index は不要（resourcesでカバー済み）
+  # get "ingredients/index"
+
+  # =========================
+  # レシピ
+  # =========================
+  resources :recipes, only: [ :create, :show ]
+
+  # =========================
+  # お気に入り
+  # =========================
   resources :favorites, only: [ :index, :show, :create, :destroy ]
+
+  # =========================
+  # ユーザー
+  # =========================
   resource :user, only: [ :show ]
+
+  # =========================
+  # お問い合わせ
+  # =========================
   resources :contacts, only: [ :new, :create ]
 
+  # =========================
+  # 静的ページ
+  # =========================
+  get "static_pages/privacy_policy"
   get "privacy_policy", to: "static_pages#privacy_policy"
   get "terms", to: "static_pages#terms"
+
+  # =========================
+  # ヘルスチェック
+  # =========================
+  get "up" => "rails/health#show", as: :rails_health_check
 end
