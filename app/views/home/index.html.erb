@@ -2,40 +2,52 @@
 
   <h1>食材を選んで副菜を提案</h1>
 
-  <%= link_to "レシピを提案する",
-      recipes_show_path,
-      class: "btn-primary disabled",
-      data: {
-        ingredients_target: "submit"
-      } %>
+  <%= form_with url: recipes_path,
+              method: :post,
+              local: true do %>
 
-  <% @categories.each do |category| %>
+    <% @categories.each do |category| %>
 
-    <section class="ingredient-section">
+      <section class="ingredient-section">
 
-      <h2><%= category.name %></h2>
+        <h2><%= category.name %></h2>
 
-      <div class="ingredient-grid">
+        <div class="ingredient-grid">
 
-        <% category.ingredients.each do |ingredient| %>
+          <% category.ingredients.each do |ingredient| %>
 
-          <button
-            class="ingredient-card"
-            data-action="click->ingredients#toggle">
+            <button
+              type="button"
+              class="ingredient-card"
+              data-action="click->ingredients#toggle">
 
-            <div class="ingredient-circle">
+              <div class="ingredient-circle"></div>
 
-            </div>
+              <span><%= ingredient.name %></span>
 
-            <span><%= ingredient.name %></span>
+            </button>
 
-          </button>
+            <%= hidden_field_tag "ingredient_ids[]",
+                ingredient.id,
+                disabled: true,
+                data: {
+                  ingredients_target: "input"
+                } %>
 
-        <% end %>
+          <% end %>
 
-      </div>
+        </div>
 
-    </section>
+      </section>
+
+    <% end %>
+
+    <%= submit_tag "🍳 レシピを提案する",
+        class: "btn-primary disabled",
+        data: {
+          ingredients_target: "submit"
+        },
+        disabled: true %>
 
   <% end %>
 

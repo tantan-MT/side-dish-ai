@@ -1,31 +1,22 @@
 Rails.application.routes.draw do
-  get "contacts/new"
-  get "contacts/create"
-  get "static_pages/privacy_policy"
-  get "users/show"
   devise_for :users
-  get "recipes/show"
-  get "ingredients/index"
-  get "home/index"
+
   root "home#index"
-  match "/", to: "home#index", via: [ :get, :head ]
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  match "/", to: "home#index", via: [:get, :head]
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get "home/index"
+  get "ingredients/index"
+  resources :ingredients, only: [:index]
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  resources :recipes
+  resources :favorites, only: [:index, :show, :create, :destroy]
 
-  # Defines the root path route ("/")
-  # root "posts#index"
-  resources :ingredients, only: [ :index ]
-  resources :favorites, only: [ :index, :show, :create, :destroy ]
-  resource :user, only: [ :show ]
-  resources :contacts, only: [ :new, :create ]
+  resource :user, only: [:show]
+  resources :contacts, only: [:new, :create]
 
+  get "static_pages/privacy_policy"
   get "privacy_policy", to: "static_pages#privacy_policy"
   get "terms", to: "static_pages#terms"
+
+  get "up" => "rails/health#show", as: :rails_health_check
 end

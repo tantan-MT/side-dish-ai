@@ -1,30 +1,54 @@
-<h1><%= @recipe[:title] %></h1>
+<div class="recipe-header">
 
-<p><%= @recipe[:description] %></p>
+  <p class="recipe-label">
+    🍽 AIがおすすめする副菜
+  </p>
 
-<h2>材料</h2>
-<ul>
-  <% @recipe[:ingredients].each do |ingredient| %>
-    <li><%= ingredient %></li>
-  <% end %>
-</ul>
+  <h1><%= @recipe.title %></h1>
 
-<h2>作り方</h2>
-<ol>
-  <% @recipe[:steps].each do |step| %>
-    <li><%= step %></li>
-  <% end %>
-</ol>
+  <p class="recipe-description">
+    <%= @recipe.description %>
+  </p>
 
-<%= link_to "もう一度提案する", recipes_show_path, class: "btn btn-secondary" %>
+</div>
 
-<%= button_to "保存する",
-    favorites_path,
-    method: :post,
-    params: {
-      title: @recipe[:title],
-      instructions: @recipe[:steps].join("\n")
-    },
-    class: "btn btn-primary" %>
+<div class="recipe-section">
 
-<%= link_to "トップに戻る", root_path %>
+  <h2>🥕 材料</h2>
+
+  <ul class="recipe-list">
+    <% @ingredients.each do |ingredient| %>
+      <li>✓ <%= ingredient %></li>
+    <% end %>
+  </ul>
+
+</div>
+
+<div class="recipe-section">
+
+  <h2>🍳 作り方</h2>
+
+  <ol class="recipe-list">
+    <% @steps.each do |step| %>
+      <li><%= step %></li>
+    <% end %>
+  </ol>
+
+</div>
+
+<div class="recipe-buttons">
+
+  <%= button_to "⭐ 保存する",
+      favorites_path,
+      method: :post,
+      params: {
+        title: @recipe.title,
+        instructions: @steps.join("\n")
+      },
+      class: "btn-primary" %>
+
+  <%= link_to "🔄 もう一度提案する",
+      root_path,
+      class: "btn-secondary" %>
+
+</div>
