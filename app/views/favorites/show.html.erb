@@ -1,16 +1,47 @@
-<h1><%= @recipe.title %></h1>
+<div class="favorite-show">
 
-<h2>作り方</h2>
+  <div class="recipe-header">
 
-<p><%= simple_format(@recipe.instructions) %></p>
+    <p class="recipe-label">
+      🍽 保存したレシピ
+    </p>
 
-<%= button_to "保存を解除",
-              favorite_path(@recipe),
-              method: :delete,
-              data: {
-                turbo_confirm: "このレシピを削除しますか？"
-              } %>
+    <h1><%= @recipe.title %></h1>
 
-<br>
+  </div>
 
-<%= link_to "保存レシピ一覧へ戻る", favorites_path %>
+  <div class="recipe-section">
+
+    <h2>🍳 作り方</h2>
+
+    <ol class="recipe-list">
+
+      <% @recipe.instructions.split("\n").each do |step| %>
+
+        <% next if step.blank? %>
+
+        <li><%= step %></li>
+
+      <% end %>
+
+    </ol>
+
+  </div>
+
+  <div class="recipe-buttons">
+
+    <%= button_to "🗑 保存を解除",
+          favorite_path(@recipe),
+          method: :delete,
+          data: {
+            turbo_confirm: "このレシピを削除しますか？"
+          },
+          class: "btn-secondary" %>
+
+    <%= link_to "← 一覧へ戻る",
+          favorites_path,
+          class: "btn-primary" %>
+
+  </div>
+
+</div>

@@ -1,13 +1,45 @@
-<h1>保存したレシピ一覧</h1>
+<div class="favorites-page">
 
-<% if @recipes.any? %>
-  <ul>
-    <% @recipes.each do |recipe| %>
-      <li>
-        <%= link_to recipe.title, favorite_path(recipe) %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>保存したレシピはありません。</p>
-<% end %>
+  <h1>保存したレシピ一覧</h1>
+
+  <% if @recipes.any? %>
+
+    <div class="favorites-grid">
+
+      <% @recipes.each do |recipe| %>
+
+        <div class="favorite-card">
+
+          <h2>
+            🍽 <%= recipe.title %>
+          </h2>
+
+          <p class="favorite-date">
+            保存したレシピ
+          </p>
+
+          <%= link_to "詳細を見る",
+                      favorite_path(recipe),
+                      class: "btn-primary" %>
+
+        </div>
+
+      <% end %>
+
+    </div>
+
+  <% else %>
+
+    <div class="empty-favorites">
+
+      <p>まだ保存したレシピはありません。</p>
+
+      <%= link_to "レシピを探す",
+                  root_path,
+                  class: "btn-primary" %>
+
+    </div>
+
+  <% end %>
+
+</div>

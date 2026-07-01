@@ -377,3 +377,166 @@ body {
   height: 72px;
   object-fit: contain;
 }
+
+/* ===========================
+   Loading Screen
+=========================== */
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.98);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.hidden {
+  display: none;
+}
+
+.loading-card {
+  text-align: center;
+}
+
+.loading-card h2 {
+  margin-top: 24px;
+  color: #6d4c41;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.loading-card p {
+  margin-top: 16px;
+  color: #666;
+  line-height: 1.7;
+}
+
+.loading-spinner {
+  width: 90px;
+  height: 90px;
+
+  margin: auto;
+
+  border: 8px solid #ffe5cc;
+  border-top: 8px solid #ff8a3d;
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================
+   Favorites
+========================== */
+
+.favorites-page {
+  max-width: 1100px;
+  margin: 60px auto;
+}
+
+.favorites-page h1 {
+  font-size: 56px;
+  color: #6d4c41;
+  margin-bottom: 50px;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.favorite-card {
+  background: white;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  transition: .25s;
+}
+
+.favorite-card:hover {
+  transform: translateY(-5px);
+}
+
+.favorite-card h2 {
+  color: #6d4c41;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.favorite-date {
+  color: #888;
+  margin-bottom: 30px;
+}
+
+.empty-favorites {
+  text-align: center;
+  margin-top: 80px;
+}
+
+/* ==========================
+   Favorite Show
+========================== */
+
+.favorite-show {
+  max-width: 900px;
+  margin: 60px auto;
+}
+
+.favorite-show .recipe-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.favorite-show .recipe-header h1 {
+  font-size: 54px;
+  color: #6d4c41;
+  margin-top: 12px;
+}
+
+.favorite-show .recipe-label {
+  color: #ff8a3d;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.favorite-show .recipe-section {
+  background: white;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  margin-bottom: 40px;
+}
+
+.favorite-show .recipe-section h2 {
+  color: #6d4c41;
+  margin-bottom: 24px;
+}
+
+.favorite-show .recipe-list {
+  padding-left: 28px;
+}
+
+.favorite-show .recipe-list li {
+  margin-bottom: 18px;
+  font-size: 22px;
+  line-height: 1.8;
+}
+
+.favorite-show .recipe-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
