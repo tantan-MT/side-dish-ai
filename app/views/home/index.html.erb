@@ -3,8 +3,8 @@
   <h1>食材を選んで副菜を提案</h1>
 
   <%= form_with url: recipes_path,
-              method: :post,
-              local: true do %>
+                method: :post,
+                local: true do %>
 
     <% @categories.each do |category| %>
 
@@ -21,18 +21,32 @@
               class="ingredient-card"
               data-action="click->ingredients#toggle">
 
-              <div class="ingredient-circle"></div>
+              <div class="ingredient-circle">
+
+                <% image_file =
+                     if ingredient.image_name.present? &&
+                        Rails.root.join("app/assets/images/ingredients", ingredient.image_name).exist?
+                       ingredient.image_name
+                     else
+                       "no_image.png"
+                     end %>
+
+                <%= image_tag "ingredients/#{image_file}",
+                              alt: ingredient.name,
+                              class: "ingredient-image" %>
+
+              </div>
 
               <span><%= ingredient.name %></span>
 
             </button>
 
             <%= hidden_field_tag "ingredient_ids[]",
-                ingredient.id,
-                disabled: true,
-                data: {
-                  ingredients_target: "input"
-                } %>
+                                 ingredient.id,
+                                 disabled: true,
+                                 data: {
+                                   ingredients_target: "input"
+                                 } %>
 
           <% end %>
 
@@ -43,11 +57,11 @@
     <% end %>
 
     <%= submit_tag "🍳 レシピを提案する",
-        class: "btn-primary disabled",
-        data: {
-          ingredients_target: "submit"
-        },
-        disabled: true %>
+                   class: "btn-primary disabled",
+                   data: {
+                     ingredients_target: "submit"
+                   },
+                   disabled: true %>
 
   <% end %>
 
