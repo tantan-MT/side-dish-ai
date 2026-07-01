@@ -1,10 +1,13 @@
-<div data-controller="ingredients">
+<div data-controller="ingredients loading">
 
   <h1>食材を選んで副菜を提案</h1>
 
   <%= form_with url: recipes_path,
                 method: :post,
-                local: true do %>
+                local: true,
+                data: {
+                  action: "submit->loading#show"
+                } do %>
 
     <% @categories.each do |category| %>
 
@@ -64,5 +67,26 @@
                    disabled: true %>
 
   <% end %>
+
+  <div
+    class="loading-overlay hidden"
+    data-loading-target="overlay">
+
+    <div class="loading-card">
+
+      <div class="loading-spinner"></div>
+
+      <h2 data-loading-target="message">
+        👨‍🍳 AIがレシピを考えています
+      </h2>
+
+      <p>
+        食材に合う副菜を作成しています<br>
+        少々お待ちください
+      </p>
+
+    </div>
+
+  </div>
 
 </div>
