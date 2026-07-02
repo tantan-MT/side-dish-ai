@@ -1,0 +1,34 @@
+<div class="recipe-error">
+
+  <div class="error-card">
+
+    <div class="error-icon">
+      ⚠️
+    </div>
+
+    <h1>レシピを生成できませんでした</h1>
+
+    <p>
+      通信状況やAIサービスの混雑により、
+      レシピを作成できませんでした。
+    </p>
+
+    <p>
+      時間をおいて、もう一度お試しください。
+    </p>
+
+    <div class="recipe-buttons">
+
+      <%= link_to "🔄 もう一度試す",
+          root_path,
+          class: "btn-primary" %>
+
+      <%= link_to "🏠 トップへ戻る",
+          root_path,
+          class: "btn-secondary" %>
+
+    </div>
+
+  </div>
+
+</div>
