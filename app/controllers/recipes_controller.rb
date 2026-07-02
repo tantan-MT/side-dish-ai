@@ -15,17 +15,23 @@ class RecipesController < ApplicationController
         RecipeGenerator.new.generate(ingredients.map(&:name))
       end
 
+    # =========================
+    # レシピ生成失敗
+    # =========================
+    if recipe_data.nil?
+      render :error, status: :unprocessable_entity
+      return
+    end
+
     recipe = Recipe.create!(
       title: recipe_data[:title].to_s,
       description: recipe_data[:description].to_s
     )
 
-    # =========================
-    # 🔥 ここが重要（中間テーブル）
-    # =========================
+    # 食材との関連付け
     recipe.ingredients << ingredients
 
-    # stepsはカラム保存
+    # 作り方保存
     recipe.update!(
       steps: recipe_data[:steps].to_json
     )

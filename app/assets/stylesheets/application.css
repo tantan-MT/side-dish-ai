@@ -540,3 +540,49 @@ body {
   gap: 20px;
   flex-wrap: wrap;
 }
+
+/* ==========================
+   Recipe Error
+========================== */
+
+.recipe-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+.error-card {
+  background: white;
+  border-radius: 28px;
+  padding: 60px;
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.error-icon {
+  font-size: 72px;
+  margin-bottom: 24px;
+}
+
+.error-card h1 {
+  color: #6d4c41;
+  font-size: 42px;
+  margin-bottom: 24px;
+}
+
+.error-card p {
+  color: #666;
+  font-size: 22px;
+  line-height: 1.8;
+}
+
+.error-card .recipe-buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}

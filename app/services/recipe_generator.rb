@@ -21,7 +21,7 @@ class RecipeGenerator
 
     result = JSON.parse(cleaned, symbolize_names: true)
 
-    # 型保証（ここが重要）
+    # 型保証
     result[:title] = result[:title].to_s
     result[:description] = result[:description].to_s
 
@@ -29,15 +29,10 @@ class RecipeGenerator
     result[:steps] = normalize_array(result[:steps])
 
     result
-  rescue => e
-    Rails.logger.error("RecipeGenerator Error: #{e.message}")
 
-    {
-      title: "エラー",
-      description: "レシピ生成に失敗しました",
-      ingredients: [],
-      steps: []
-    }
+  rescue StandardError => e
+    Rails.logger.error("RecipeGenerator Error: #{e.message}")
+    nil
   end
 
   private
@@ -57,7 +52,7 @@ class RecipeGenerator
   end
 
   # =========================
-  # プロンプト（条件フル保持）
+  # プロンプト
   # =========================
   def prompt(ingredients)
     <<~PROMPT
