@@ -26,17 +26,19 @@
 
               <div class="ingredient-circle">
 
-                <% image_file =
-                     if ingredient.image_name.present? &&
-                        Rails.root.join("app/assets/images/ingredients", ingredient.image_name).exist?
-                       ingredient.image_name
-                     else
-                       "no_image.png"
-                     end %>
+                <% if ingredient.image_url.present? %>
 
-                <%= image_tag "ingredients/#{image_file}",
-                              alt: ingredient.name,
-                              class: "ingredient-image" %>
+                  <%= image_tag ingredient.image_url,
+                                alt: ingredient.name,
+                                class: "ingredient-image" %>
+
+                <% else %>
+
+                  <%= image_tag "ingredients/no_image.png",
+                                alt: ingredient.name,
+                                class: "ingredient-image" %>
+
+                <% end %>
 
               </div>
 

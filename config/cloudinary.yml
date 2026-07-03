@@ -1,0 +1,14 @@
+development:
+  cloud_name: diufh1hcb
+  api_key: 173419756191355
+  api_secret: KaRt_bsY4B1jIDrn4ybDqWBldnQ
+
+test:
+  cloud_name: diufh1hcb
+  api_key: 173419756191355
+  api_secret: KaRt_bsY4B1jIDrn4ybDqWBldnQ
+
+production:
+  cloud_name: <%= ENV["CLOUDINARY_CLOUD_NAME"] %>
+  api_key: <%= ENV["CLOUDINARY_API_KEY"] %>
+  api_secret: <%= ENV["CLOUDINARY_API_SECRET"] %>
